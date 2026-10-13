@@ -105,5 +105,19 @@ public class EmployeeController {
         return Result.success(pageResult);
     }
 
+    /**
+     * 启用禁用员工登录权限
+     * @param status
+     * @param id
+     * @return
+     */
+    @PostMapping("/status/{status}")
+    @ApiOperation(value="启用禁用员工登录权限")
+    public Result updateStatus(@PathVariable Integer status, Long id)
+    {
+        log.info("员工状态：{}，{}", status,id);
+        employeeService.updateStatus(status,id);
+        return Result.success();
+    }
 
 }
